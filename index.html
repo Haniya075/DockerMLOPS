@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Prediction</title>
+    <link rel="stylesheet" href="static/designs.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Marks Prediction App</h1>
+        <div class="form-group">
+            <label for="hoursStudied">Hours Studied:</label>
+            <input type="number" id="hoursStudied" placeholder="Enter hours studied">
+        </div>
+        <div class="form-group">
+            <label for="previousMarks">Previous Marks:</label>
+            <input type="number" id="previousMarks" placeholder="Enter previous marks">
+        </div>
+        <button id="submit">Predict Marks</button>
+
+        <div class="result-group">
+            <label for="marksOutput">Predicted Marks:</label>
+            <input type="text" id="marksOutput" readonly>
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>
