@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('1')  
+        IMAGE_NAME = 'haniyaa/test_image:latest'    
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Haniya075/DockerMLOPS.git/']])
+            }
+        }
+
+        stage('Docker Login') {
+            steps {
+                script {
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                    println("Logged in to github")
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'docker build -t $IMAGE_NAME .'
+                    echo "Building docker image ......"
+                }
+            }
+        }
+
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    sh 'docker push $IMAGE_NAME'
+                    echo'Pushing image ....'
+                }
+            }
+        }
+    }
+
+}
