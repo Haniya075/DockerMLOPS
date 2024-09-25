@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('1')  
-        IMAGE_NAME = 'haniyaa/test_image:latest'    
+        IMAGE_NAME = 'haniyaa/test_Image:latest'    
     }
 
     stages {
